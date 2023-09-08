@@ -105,4 +105,5 @@ foo@bar:distribution$ git push origin main
 ```
 2. Then follow the FAQ Q1.
 3. And then you shall be able to add, commit, and push without any errors.
+
 If you still face any error in this process, please don't hesitate to ask on Discord.
