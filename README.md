@@ -54,3 +54,56 @@ foo@bar:distribution$ git push origin main
 https://github.iu.edu/CSCI-C343-Fall2023/username-submission/commit/26bc3f1a824151502adf56d061aaf5352d0216b2
 ```
 4. Submit the text file (username_commit_hash.txt) with the latest commit hash to Canvas.
+
+## FAQ:
+### Q1) How to fix the following error:
+```console
+To https://github.iu.edu/CSCI-C343-Fall2023/username-submission.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.iu.edu/CSCI-C343-Fall2023/username-submission.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+### A1)
+This error occurs when your username-submission repo is some commits ahead of what's on your local machine. To fix this error:
+1. NECESSARY STEP: Make a copy of your distribution folder as distribution_copy. This is a necessary step as otherwise you would lose all of your work.
+2. Run the following command:
+```console
+foo@bar:distribution$ git pull --rebase origin main
+```
+3. Copy all of the content from the distribution_copy folder back to distribution folder.
+4. Run the following commands:
+```console
+foo@bar:distribution$ git add .
+foo@bar:distribution$ git commit -m "<MESSAGE IN DOUBLE QUOTES>"
+foo@bar:distribution$ git push origin main
+```
+If you still face any error in this process, please don't hesitate to ask on Discord.
+
+### Q2) I tried fixing the following error using the method above, but it didn't work. What do I do?
+```console
+To https://github.iu.edu/CSCI-C343-Fall2023/username-submission.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.iu.edu/CSCI-C343-Fall2023/username-submission.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+### A2)
+1. Run the following commands:
+```console
+foo@bar:distribution$ git status
+foo@bar:distribution$ git add <LIST OF ALL THE FILES YOU SEE IN RED ON RUNNING GIT STATUS SEPARATED BY SPACE>
+foo@bar:distribution$ git commit -m "resolving conflicts"
+foo@bar:distribution$ git push origin main
+```
+2. Then follow the FAQ Q1.
+3. And then you shall be able to add, commit, and push without any errors.
+
+If you still face any error in this process, please don't hesitate to ask on Discord.
