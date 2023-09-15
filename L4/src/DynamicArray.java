@@ -15,10 +15,34 @@ public class DynamicArray {
     }
 
     public void append(int val) {
+        if (size == capacity) {
+            // resizing the array if its full
+            int newCapacity = (int) (capacity * growthFactor);
+            resize(newCapacity);
+        }
+
+        // to add the value of the end of the array
+        arr[size] = val;
+        size++;
+
         //TODO: Implement this method
     }
 
     public int pop() {
+        if (size == 0) {
+            throw new IndexOutOfBoundsException("Index out of range!");
+        }
+
+        // to remove the last element of the array
+        int poppedValue = arr[size - 1];
+        size--;
+
+        // checking if the size is smaller than the capacity
+        if (size < capacity / 4) {
+            int newCapacity = capacity / 2;
+            resize(newCapacity);
+        }
+        return poppedValue;
         //TODO: Implement this method
     }
 
@@ -30,6 +54,13 @@ public class DynamicArray {
     }
 
     private void resize(int newCapacity) {
+        int[] newArr = new int[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newArr[i] = arr[i];
+        }
+        arr = newArr;
+        capacity = newCapacity;
+
         //TODO: Implement this method
     }
 
